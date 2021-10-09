@@ -21,7 +21,8 @@ public class ApiController {
 
     @GetMapping("/hello")
     public UserResponse getHello(){
-        return restTemplateService.hello();
+        //return restTemplateService.hello();
+        return restTemplateService.post();
         // 컨트롤러로(get으로) 요청이 들어오면 restTemplateService 통해서 서버로 호출해서 응답을 받아서 response로 내린다
     }
 }
