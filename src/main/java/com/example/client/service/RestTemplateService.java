@@ -41,7 +41,7 @@ public class RestTemplateService {
     }
 
     // post로 보내기
-    public UserResponse post(){
+    public void post(){
         // http://localhost:9090/api/server/user/{userId}/name/{userName}
         // user를 등록시키는 것을 만들거다
         // 1. 주소 만들고
@@ -62,12 +62,13 @@ public class RestTemplateService {
 
         // rest template으로 쏘기만 하면됨 , 서버에서 받아주면 됨
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<UserResponse> response = restTemplate.postForEntity(uri, req, UserResponse.class);    // 응답을 뭘로 받을지 지정한다
+        ResponseEntity<String> response = restTemplate.postForEntity(uri, req, String.class);    // 응답을 뭘로 받을지 지정한다
                                                            // 해당 주소에(uri) request body를 만들어서 응답(req)을 이걸로(UserResponse.class) 받을 거다
+                                                            // 뭘로 내려줄지 모르니까 일단 String으로 받는걸로 변경
         System.out.println(response.getStatusCode());
         System.out.println(response.getHeaders());
         System.out.println(response.getBody());
 
-        return response.getBody();
+        //return response.getBody();
     }
 }
